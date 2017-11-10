@@ -5,6 +5,11 @@
  */
 package seleniumtst;
 
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author chuer
@@ -16,6 +21,10 @@ public class SeleniumTst {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+//        LoginTest login;
+//        login = new LoginTest();
+//        login.RunTest();        
     }
     
 }
