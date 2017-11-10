@@ -91,19 +91,22 @@ public class AddContactTest {
         Assert.assertEquals(tabText,"General");        //Verifico que se abre el pop up
         
 //        Ejecuto dependencia Save Contact
-
          SaveContact();
-//        Ejecuto dependencia Logout
+
         driver.switchTo().window(tabs2.get(0));       //vuelvo a la pestania principal.
         
         
     }
     
     @AfterClass
-    public  static void afterTests() throws IOException{
-//        LogoutTest logoutTest = new LogoutTest();
-//        logoutTest.RunTest();
-//        driver.quit();
+    public  static void afterTests() throws IOException, InterruptedException{
+        //Elimino el contacto
+        DeleteContactTest contact = new DeleteContactTest();
+        contact.RunTest();
+        //        Ejecuto dependencia Logout
+        LogoutTest logoutTest = new LogoutTest();
+        logoutTest.RunTest();
+        driver.quit();
     }
     //Pre: Pestania de carga de datos de usuario.
     private void SaveContact(){

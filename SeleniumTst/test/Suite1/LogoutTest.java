@@ -9,7 +9,6 @@ import java.io.IOException;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,8 +38,6 @@ public class LogoutTest {
 
     @Test            //Pre: Logueado
     public void RunTest() throws IOException {
-        
-
         WebElement adressBookLink = driver.findElement(By.xpath("//a[@href='/egroupware/logout.php']"));
         adressBookLink.click();
 
