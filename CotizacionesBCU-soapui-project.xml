@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="d3c5c381-a107-4d28-a7af-ffd1e25d7c65" activeEnvironment="Default" name="CotizacionesBCU" resourceRoot="${projectDir}" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="65178d23-011e-4647-bbca-13a875eb1ca0" wsaVersion="NONE" name="wsbcucotizacionesSoapBinding" type="wsdl" bindingName="{Cotiza}wsbcucotizacionesSoapBinding" soapVersion="1_1" anonymous="optional" definition="https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones?wsdl"><con:part><con:url>https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones?wsdl</con:url><con:content><![CDATA[<definitions name="wsbcucotizaciones" targetNamespace="Cotiza" xmlns:wsdlns="Cotiza" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="Cotiza">
+  <types>
+    <schema targetNamespace="Cotiza" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+      <complexType name="wsbcucotizacionesin">
+        <sequence>
+          <element name="Moneda" type="tns:ArrayOfint"></element>
+          <element name="FechaDesde" type="xsd:date" nillable="true"></element>
+          <element name="FechaHasta" type="xsd:date" nillable="true"></element>
+          <element name="Grupo" type="xsd:byte"></element>
+        </sequence>
+      </complexType>
+      <complexType name="ArrayOfint">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="item" type="xsd:short"></element>
+        </sequence>
+      </complexType>
+      <complexType name="wsbcucotizacionesout">
+        <sequence>
+          <element name="respuestastatus" type="tns:respuestastatus"></element>
+          <element name="datoscotizaciones" type="tns:datoscotizaciones"></element>
+        </sequence>
+      </complexType>
+      <complexType name="respuestastatus">
+        <sequence>
+          <element name="status" type="xsd:byte"></element>
+          <element name="codigoerror" type="xsd:short"></element>
+          <element name="mensaje" type="xsd:string"></element>
+        </sequence>
+      </complexType>
+      <complexType name="datoscotizaciones">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="datoscotizaciones.dato" type="tns:datoscotizaciones.dato"></element>
+        </sequence>
+      </complexType>
+      <complexType name="datoscotizaciones.dato">
+        <sequence>
+          <element name="Fecha" type="xsd:date" nillable="true"></element>
+          <element name="Moneda" type="xsd:short"></element>
+          <element name="Nombre" type="xsd:string"></element>
+          <element name="CodigoISO" type="xsd:string"></element>
+          <element name="Emisor" type="xsd:string"></element>
+          <element name="TCC" type="xsd:double"></element>
+          <element name="TCV" type="xsd:double"></element>
+          <element name="ArbAct" type="xsd:double"></element>
+          <element name="FormaArbitrar" type="xsd:byte"></element>
+        </sequence>
+      </complexType>
+      <element name="wsbcucotizaciones.Execute">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="Entrada" type="tns:wsbcucotizacionesin"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="wsbcucotizaciones.ExecuteResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="Salida" type="tns:wsbcucotizacionesout"/>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="wsbcucotizaciones.ExecuteSoapIn">
+    <part name="parameters" element="tns:wsbcucotizaciones.Execute"/>
+  </message>
+  <message name="wsbcucotizaciones.ExecuteSoapOut">
+    <part name="parameters" element="tns:wsbcucotizaciones.ExecuteResponse"/>
+  </message>
+  <portType name="wsbcucotizacionesSoapPort">
+    <operation name="Execute">
+      <input message="wsdlns:wsbcucotizaciones.ExecuteSoapIn"/>
+      <output message="wsdlns:wsbcucotizaciones.ExecuteSoapOut"/>
+    </operation>
+  </portType>
+  <binding name="wsbcucotizacionesSoapBinding" type="wsdlns:wsbcucotizacionesSoapPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Execute">
+      <soap:operation soapAction="Cotizaaction/AWSBCUCOTIZACIONES.Execute"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="wsbcucotizaciones">
+    <port name="wsbcucotizacionesSoapPort" binding="wsdlns:wsbcucotizacionesSoapBinding">
+      <soap:address location="https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones</con:endpoint></con:endpoints><con:operation id="15b62d73-69b7-4365-870e-56db24860e88" isOneWay="false" action="Cotizaaction/AWSBCUCOTIZACIONES.Execute" name="Execute" bindingOperationName="Execute" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="aca72131-2693-4ead-93ba-a02b508f5255" name="RequestWS"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cot="Cotiza">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cot:wsbcucotizaciones.Execute>\r
+         <cot:Entrada>\r
+            <cot:Moneda>\r
+               <cot:item>2225</cot:item>\r
+            </cot:Moneda>\r
+            <cot:FechaDesde>2016-08-15</cot:FechaDesde>\r
+            <cot:FechaHasta>2016-08-16</cot:FechaHasta>\r
+            <cot:Grupo>0</cot:Grupo>\r
+         </cot:Entrada>\r
+      </cot:wsbcucotizaciones.Execute>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="Cotizaaction/AWSBCUCOTIZACIONES.Execute"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="e6c8fc7a-1233-4d27-bd09-2c972a89eb69" name="wsbcucotizacionesSoapBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="1bf2b52f-ec91-4c15-907a-0c6fe8a913e7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Execute TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="9dbfbccd-e96b-4cc6-b67e-941247cc1237" name="Execute"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>wsbcucotizacionesSoapBinding</con:interface><con:operation>Execute</con:operation><con:request name="Execute" id="0be63bc4-c458-4dd5-afe9-7feaa5fb8bef"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://cotizaciones.bcu.gub.uy/wscotizaciones/servlet/awsbcucotizaciones</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cot="Cotiza">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cot:wsbcucotizaciones.Execute>\r
+         <cot:Entrada>\r
+            <cot:Moneda>\r
+               <!--Zero or more repetitions:-->\r
+               <cot:item>?</cot:item>\r
+            </cot:Moneda>\r
+            <cot:FechaDesde>?</cot:FechaDesde>\r
+            <cot:FechaHasta>?</cot:FechaHasta>\r
+            <cot:Grupo>?</cot:Grupo>\r
+         </cot:Entrada>\r
+      </cot:wsbcucotizaciones.Execute>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="Cotizaaction/AWSBCUCOTIZACIONES.Execute" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
